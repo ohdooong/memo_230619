@@ -18,6 +18,10 @@ public class UserBO {
 		return userRepository.findByLoginId(loginId);
 	}
 	
+	// input : loginId, password		output : UserEntity(null 이거나 Entity)
+	public UserEntity getUserEntityByLoginIdPassword (String loginId, String password) {
+		return userRepository.findByLoginIdAndPassword(loginId, password);
+	}
 	
 	// input: 4개 파라미터			
 	// output: id(pk) => (실무) 
