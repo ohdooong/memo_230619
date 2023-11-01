@@ -24,7 +24,7 @@ public class UserBO {
 	}
 	
 	// input: 4개 파라미터			
-	// output: id(pk) => (실무) 
+	// output: id(pk) => (실무) 김영한 강사 스프링 강의 中
 	public Integer addUser(String loginId, String password, String name, String email) {
 		// UserEntity = save(UserEntity);
 		UserEntity userEntity = userRepository.save(
