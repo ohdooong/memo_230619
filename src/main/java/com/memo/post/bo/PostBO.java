@@ -20,5 +20,9 @@ public class PostBO {
 		return postMapper.selectPostListByUserId(userId);
 	}
 	
+	public void addPost(String subject, String content, int userId, String imagePath) {
+		postMapper.insertPost(subject, content,  imagePath ,userId);
+	}
+	
 	
 }

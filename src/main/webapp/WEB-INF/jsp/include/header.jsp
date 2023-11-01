@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 
-<div class="d-flex align-items-center h-100 ml-3 bg-warning">
+<div class="d-flex align-items-center justify-content-between h-100 ml-3 bg-warning">
 	<div>
 		<h2 class="font-weight-bold">메모게시판</h2>
 	</div>

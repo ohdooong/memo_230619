@@ -17,7 +17,7 @@ public class UserController {
 	 * @param model
 	 * @return
 	 */
-	@GetMapping("/sign_up_view")
+	@GetMapping("/sign-up-view")
 	public String signUpView(Model model) {
 		
 		model.addAttribute("viewName", "user/signUp");

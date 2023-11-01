@@ -20,14 +20,6 @@ public class PostController {  // 화면 return
 	@Autowired
 	private PostBO postBO;
 	
-	
-	
-	/**
-	 * 글 목록 화면
-	 * @param model
-	 * @return
-	 */
-	
 	@GetMapping("/post-list-view")
 	public String postListView(HttpSession session , Model model) {
 		
@@ -42,6 +34,15 @@ public class PostController {  // 화면 return
 		
 		model.addAttribute("postList", postList);
 		model.addAttribute("viewName", "post/postList");
+		return "template/layout";
+	}
+	
+	/**
+	 * 글쓰기 화면
+	 */
+	@GetMapping("/post-create-view")
+	public String postCreateView(Model model) {
+		model.addAttribute("viewName", "post/postCreate");
 		return "template/layout";
 	}
 	
