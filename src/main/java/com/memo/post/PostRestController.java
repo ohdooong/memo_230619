@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.memo.common.FileManagerService;
 import com.memo.post.bo.PostBO;
 
 @RequestMapping("/post")
@@ -24,8 +26,9 @@ public class PostRestController {
 	public Map<String, Object> create(
 			@RequestParam("subject") String subject,
 			@RequestParam("content") String content,
+			@RequestParam(value = "file", required = false) MultipartFile file,
 			HttpSession session) {
-		String imagePath = null;
+		
 		
 		//mybatis
 		
@@ -34,7 +37,9 @@ public class PostRestController {
 		// 로그인 안한 사용자는 못한다는 가정
 		int userId = (int)session.getAttribute("userId");
 		
-		postBO.addPost(subject, content, userId, imagePath);
+		String userLoginId = (String)session.getAttribute("userLoginId");
+		
+		postBO.addPost(userId, userLoginId, subject, content, file);
 		result.put("code", 200);
 		result.put("result", "success");
 		
