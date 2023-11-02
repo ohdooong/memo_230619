@@ -69,7 +69,7 @@
 				
 				// request
 				type:"POST"
-				, url:"/user/is_duplicated_id"
+				, url:"/user/is-duplicated-id"
 				, data:{"loginId":loginId}
 			
 				// response

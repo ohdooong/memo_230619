@@ -5,7 +5,7 @@
 		<h1 class="mb-4">로그인</h1>
 		
 		<%-- 키보드 Enter키로 로그인이 될 수 있도록 form 태그를 만들어준다.(submit 타입의 버튼이 동작됨) --%>
-		<form id="loginForm" action="/user/sign-in-view" method="post">
+		<form id="loginForm" action="/user/sign-in" method="post">
 			<div class="input-group mb-3">
 				<%-- input-group-prepend: input box 앞에 ID 부분을 회색으로 붙인다. --%>
 				<div class="input-group-prepend">

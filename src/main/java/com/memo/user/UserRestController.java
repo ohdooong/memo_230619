@@ -28,7 +28,7 @@ public class UserRestController {
 	 * @param loginId
 	 * @return
 	 */
-	@RequestMapping("/is_duplicated_id")
+	@RequestMapping("/is-duplicated-id")
 	public Map<String, Object> isDuplicatedId (
 			@RequestParam("loginId") String loginId) {
 		
@@ -90,7 +90,7 @@ public class UserRestController {
 	 * @param request
 	 * @return
 	 */
-	@PostMapping("/sign-in-view")
+	@PostMapping("/sign-in")
 	public Map<String, Object> signIn(
 			@RequestParam("loginId") String loginId,
 			@RequestParam("password") String password,
