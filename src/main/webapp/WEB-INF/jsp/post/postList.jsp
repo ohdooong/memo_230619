@@ -18,7 +18,8 @@
 			<c:forEach items="${postList}" var="post">
 				<tr>
 					<td>${post.id}</td>
-					<td>${post.subject}</td>
+					<td><a href="/post/post-detail-view?postId=${post.id}">${post.subject}</a></td>
+					<td></td>
 					<td>
 						<%-- ZonedDateTime > Date > String     jstl이 오래돼서 --%>
 						

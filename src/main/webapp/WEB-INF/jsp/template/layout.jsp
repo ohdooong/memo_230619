@@ -24,7 +24,9 @@
 			
 		</header>
 		<section class="contents">
-			<jsp:include page="../${viewName}.jsp" /> <!-- 경로 별 view를 model을 통해 유동적으로 바꿀 수 있게 -->
+			<div class="my-3">
+				<jsp:include page="../${viewName}.jsp" /> <!-- 경로 별 view를 model을 통해 유동적으로 바꿀 수 있게 -->
+			</div>
 		</section>
 			
 		<!-- footer 영역 -->

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.memo.post.bo.PostBO;
 import com.memo.post.domain.Post;
@@ -45,5 +46,28 @@ public class PostController {  // 화면 return
 		model.addAttribute("viewName", "post/postCreate");
 		return "template/layout";
 	}
+	
+	
+	@GetMapping("/post-detail-view")
+	public String postDetailView(
+			@RequestParam("postId") int postId,
+			HttpSession session,
+			Model model) {
+		
+		int userId = (int)session.getAttribute("userId");
+		
+		// DB select
+		// select where postId  and  userId    =>   다른 사용자 사용방지
+		Post post = postBO.getPostByPostIdUserId(userId, postId);
+		
+		model.addAttribute("post",post);
+		model.addAttribute("viewName", "post/postDetail");
+		return "template/layout";
+	}
+	
+	
+	
+	
+	
 	
 }

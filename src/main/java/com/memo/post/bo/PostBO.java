@@ -20,11 +20,16 @@ public class PostBO {
 	private FileManagerService fileManager;
 	
 	
-	
 	// input : userId			output:List<Post>
 	public List<Post> getPostListByUserId(int userId) {
 		return postMapper.selectPostListByUserId(userId);
 	}
+	
+	// input : postId, userId   output:Post
+	public Post getPostByPostIdUserId(int userId, int postId) {
+		return postMapper.selectPostByPostIdUserId(userId, postId);
+	}
+	
 	
 	public void addPost(int userId, String userLoginId,  String subject, String content, MultipartFile file) {
 		
@@ -34,5 +39,8 @@ public class PostBO {
 		}
 		postMapper.insertPost( subject, content,imagePath ,  userId);
 	}
+	
+	
+	
 	
 }
