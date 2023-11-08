@@ -77,8 +77,6 @@
 	WHERE
 		`id` = #{postId}
 	AND `userId` = #{userId}
-	AND `subject` = #{subject}
-	AND `content` = #{content}
 	
 	</update>
 	

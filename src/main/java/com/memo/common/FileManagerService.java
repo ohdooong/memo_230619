@@ -22,7 +22,11 @@ public class FileManagerService {    // 중복 최소화 하기 위해 => 유지
 	
 	// 실제 업로드가 된 이미지가 저장될 경로 (서버)
 	// 학원 경로
-	public static final String FILE_UPLOAD_PATH = "D:\\오승환\\5_spring_project\\memo\\workspace\\images/"; // 한번 변경 후 절대 바꿀 수 없음
+	//public static final String FILE_UPLOAD_PATH = "D:\\오승환\\5_spring_project\\memo\\workspace\\images/"; // 한번 변경 후 절대 바꿀 수 없음
+	
+	// 집 경로
+	public static final String FILE_UPLOAD_PATH = "C:\\오승환\\6_spring_project\\memo\\workspace\\images/"; // 한번 변경 후 절대 바꿀 수 없음
+	
 	
 	// input : userLoginId, file(이미지 파일)    output : 웹 imagePath
 	public String saveFile(String loginId, MultipartFile file) {

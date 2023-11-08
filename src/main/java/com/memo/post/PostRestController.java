@@ -63,7 +63,7 @@ public class PostRestController {
 			@RequestParam(value = "file", required = false) MultipartFile file,
 			HttpSession session) {
 		
-		// 기억안나면 로그인 API찾아본다.
+		// 기억안나면 로그인 API찾아본다.    =>  UserRestController
 		int userId = (int)session.getAttribute("userId");
 		String userLoginId = (String)session.getAttribute("userLoginId");
 		
