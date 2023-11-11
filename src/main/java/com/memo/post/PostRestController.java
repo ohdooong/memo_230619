@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,6 +56,15 @@ public class PostRestController {
 		
 	}
 	
+	/**
+	 * 업데이트 API
+	 * @param postId
+	 * @param subject
+	 * @param content
+	 * @param file
+	 * @param session
+	 * @return
+	 */
 	@PutMapping("/update")
 	public Map<String, Object> update(
 			@RequestParam("postId") int postId,
@@ -77,6 +87,24 @@ public class PostRestController {
 		return result;
 		
 	}
+
+	
+	@DeleteMapping("/delete")
+	public Map<String, Object> delete(
+			@RequestParam("postId") int postId,
+			HttpSession session){
+		
+		Map<String, Object> result = new HashMap<>();
+		
+		int userId = (int) session.getAttribute("userId");
+		
+		postBO.deletePostByPostIdUserId(postId, userId);
+		result.put("code", 200);
+		result.put("result", "success");
+		
+		return result;
+	}
+	
 	
 	
 	

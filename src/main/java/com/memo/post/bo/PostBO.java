@@ -18,7 +18,7 @@ public class PostBO {
 	// this => PostBO
 	// LoggerFactory 오류  :   import 살펴볼것
 	// 로그
-	private Logger logger = LoggerFactory.getLogger(this.getClass());
+	private Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	private PostMapper postMapper;
@@ -57,10 +57,10 @@ public class PostBO {
 		
 		Post post = postMapper.selectPostByPostIdUserId(userId, postId);
 		if (post == null) {
-			// logger.error
-			logger.info("==================================");
-			logger.info("[글 수정] : post is null.  post id:{}, userId:{}",postId,userId);
-			logger.info("==================================");
+			// log.error
+			log.info("==================================");
+			log.info("[글 수정] : post is null.  post id:{}, userId:{}",postId,userId);
+			log.info("==================================");
 			return;
 		}
 		
@@ -86,7 +86,28 @@ public class PostBO {
 		
 	}
 	
-	
+	// input : 글쓴이번호, 글 번호
+	// output : x
+	public void deletePostByPostIdUserId (int postId, int userId) {
+		// 기존글 먼저 가져온다 (이미지 존재 시 삭제하기 위해)
+		Post post = postMapper.selectPostByPostIdUserId(userId, postId);
+		
+		if (post == null) {
+			log.info("[글 삭제]post ::::::::: null, postId:{}, userId:{}",postId,userId);
+			log.info("[글 삭제]post ::::::::: null, postId:{}, userId:{}",postId,userId);
+			log.info("[글 삭제]post ::::::::: null, postId:{}, userId:{}",postId,userId);
+			return;
+		}
+		
+		// 기존 이미지 존재 => 삭제한다.
+		if (post.getImagePath() != null) {
+			fileManager.deleteFile(post.getImagePath());
+		}
+		
+		// DB 삭제
+		postMapper.deletePostByPostIdUserId(postId, userId);
+		
+	}
 	
 	
 	

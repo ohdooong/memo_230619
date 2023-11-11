@@ -20,7 +20,7 @@
 		</div>
 		
 		<div class="d-flex justify-content-between">
-			<button type="button" id="deleteBtn" class="btn btn-secondary">삭제</button>
+			<button type="button" id="deleteBtn" class="btn btn-secondary" data-post-id="${post.id }">삭제</button>
 			
 			<div>
 				<a href="/post/post-list-view" class="btn btn-dark">목록</a>
@@ -74,8 +74,7 @@ $(document).ready(function() {
 		formData.append("file", $('#file')[0].files[0]);
 		
 		
-		
-		$.ajax({
+		$.ajax({ 
 			// request
 			type:"put"
 			, url:"/post/update"
@@ -99,6 +98,37 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
+	
+	$("#deleteBtn").on("click", function() {
+		let postId = $(this).data("post-id");
+		
+		$.ajax({
+			
+			//request
+			type:"DELETE"
+			, url:"/post/delete"
+			, data:{"postId":postId}
+		
+			// response
+			, success:function(data) {
+				if (data.code == 200) {
+					alert("삭제 완료");
+					location.href="/post/post-list-view"
+				} else {
+					alert(data.errorMessage);
+				}
+					
+			}
+			, error:function(request, status, error) {
+				alert("로직 실패");
+			}
+		
+		});
+		
+	});
+	
+	
 });
 </script>
 
