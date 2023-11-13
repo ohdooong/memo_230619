@@ -22,7 +22,11 @@ public class PostController {  // 화면 return
 	private PostBO postBO;
 	
 	@GetMapping("/post-list-view")
-	public String postListView(HttpSession session , Model model) {
+	public String postListView(
+			@RequestParam(value="prevId", required = false) Integer prevIdParam,
+			@RequestParam(value="nextId", required = false) Integer nextIdParam,
+			HttpSession session , 
+			Model model) {
 		
 		Integer userId = (Integer)session.getAttribute("userId");   // 로그인이 안된상태에서 들어올 수도있다.    null 가정    =>    세션 존재 x
 		
@@ -31,8 +35,15 @@ public class PostController {  // 화면 return
 			return "redirect:/user/sign-in-view";
 		}
 		
-		List<Post> postList = postBO.getPostListByUserId(userId);
+		List<Post> postList = postBO.getPostListByUserId(userId, prevIdParam, nextIdParam);
+		int nextId = 0;
+		if (postList.isEmpty() == false) {
+			// postList가 비어있을 때 오류를 방지하기 위함
+			nextId = postList.get(postList.size() - 1).getId();  // Post 객체에서 Id꺼낸다.
+		}
 		
+		
+		model.addAttribute("nextId", nextId);
 		model.addAttribute("postList", postList);
 		model.addAttribute("viewName", "post/postList");
 		return "template/layout";
